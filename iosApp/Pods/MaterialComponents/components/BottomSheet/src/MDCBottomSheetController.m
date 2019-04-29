@@ -73,6 +73,14 @@
   [self.contentViewController.view layoutIfNeeded];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+
+  if (self.shouldFlashScrollIndicatorsOnAppearance) {
+    [self.trackingScrollView flashScrollIndicators];
+  }
+}
+
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
   return self.contentViewController.supportedInterfaceOrientations;
 }
@@ -82,9 +90,11 @@
     return NO;
   }
   __weak __typeof(self) weakSelf = self;
-  [self dismissViewControllerAnimated:YES completion:^{
-    [weakSelf.delegate bottomSheetControllerDidDismissBottomSheet:weakSelf];
-  }];
+  [self
+      dismissViewControllerAnimated:YES
+                         completion:^{
+                           [weakSelf.delegate bottomSheetControllerDidDismissBottomSheet:weakSelf];
+                         }];
   return YES;
 }
 
@@ -140,8 +150,7 @@
   return nil;
 }
 
-- (void)setShapeGenerator:(id<MDCShapeGenerating>)shapeGenerator
-                 forState:(MDCSheetState)state {
+- (void)setShapeGenerator:(id<MDCShapeGenerating>)shapeGenerator forState:(MDCSheetState)state {
   _shapeGenerators[@(state)] = shapeGenerator;
 
   [self updateShapeGenerator];
@@ -153,7 +162,7 @@
     self.view.shapeGenerator = shapeGenerator;
     if (shapeGenerator != nil) {
       self.contentViewController.view.layer.mask =
-      ((MDCShapedShadowLayer *)self.view.layer).shapeLayer;
+          ((MDCShapedShadowLayer *)self.view.layer).shapeLayer;
     } else {
       self.contentViewController.view.layer.mask = nil;
     }

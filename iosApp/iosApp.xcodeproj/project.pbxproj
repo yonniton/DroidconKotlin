@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45CF3E8A227381F700F0D429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45CF3E89227381F700F0D429 /* GoogleService-Info.plist */; };
 		6356313B20DC58F600BCCDF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6356313A20DC58F600BCCDF9 /* AppDelegate.swift */; };
 		6356314220DC58F700BCCDF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6356314120DC58F700BCCDF9 /* Assets.xcassets */; };
 		6356314520DC58F700BCCDF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6356314320DC58F700BCCDF9 /* LaunchScreen.storyboard */; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		125AF9578465CC0A904D623C /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		1C285D8B24230973F8AA122B /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
+		45CF3E89227381F700F0D429 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		6356313720DC58F600BCCDF9 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6356313A20DC58F600BCCDF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6356314120DC58F700BCCDF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				637100DA211085F80099FF25 /* speaker */,
 				6356314120DC58F700BCCDF9 /* Assets.xcassets */,
 				6356314620DC58F700BCCDF9 /* Info.plist */,
+				45CF3E89227381F700F0D429 /* GoogleService-Info.plist */,
 				6372423620F914D60049263B /* speakers.json */,
 				6372423820F915EA0049263B /* schedule.json */,
 				63711D3B211143390099FF25 /* about.json */,
@@ -402,6 +405,7 @@
 				63A76AD32129F1FB0000515D /* sponsors.json in Resources */,
 				6372424F20FAD9B40049263B /* EventTableViewCell.xib in Resources */,
 				63711D3C211143390099FF25 /* about.json in Resources */,
+				45CF3E8A227381F700F0D429 /* GoogleService-Info.plist in Resources */,
 				6372423C20F973370049263B /* Main.storyboard in Resources */,
 				6372423720F914D60049263B /* speakers.json in Resources */,
 			);
@@ -439,6 +443,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
@@ -446,9 +451,11 @@
 				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionTransitioning/MotionTransitioning.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
@@ -456,6 +463,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionTransitioning.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -708,7 +716,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 2UER9BPG44;
+				DEVELOPMENT_TEAM = 5A27VZVWQE;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -782,7 +790,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2UER9BPG44;
+				DEVELOPMENT_TEAM = 5A27VZVWQE;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

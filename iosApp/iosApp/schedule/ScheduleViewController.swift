@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import lib
 import MaterialComponents
+import Crashlytics
 
 class ScheduleViewController : MaterialAppBarUIViewController, UITableViewDelegate, UITableViewDataSource, MDCTabBarDelegate {
     
@@ -130,6 +131,8 @@ class ScheduleViewController : MaterialAppBarUIViewController, UITableViewDelega
         
         if(!(hourHolder.rowType() == RowType.block)){
             showEventDetailView(with: hourHolder, andIndex: indexPath.row)
+        } else {
+            Crashlytics.sharedInstance().crash()
         }
     }
     

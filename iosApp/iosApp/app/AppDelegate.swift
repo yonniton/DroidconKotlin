@@ -11,6 +11,7 @@ import lib
 import Fabric
 import Crashlytics
 import UserNotifications
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
         application.statusBarStyle = .lightContent
       
@@ -40,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appContext.dataLoad()
         
         requestNotificationPermissions()
-
+        
         return true
     }
     
