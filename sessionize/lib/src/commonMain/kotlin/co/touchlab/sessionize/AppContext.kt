@@ -133,7 +133,7 @@ object AppContext {
         if (!firstRun()) {
             val lastLoad = ServiceRegistry.appSettings.getLong(KEY_LAST_LOAD)
             if (lastLoad < (currentTimeMillis() - (TWO_HOURS_MILLIS.toLong()))) {
-                dataCalls()
+//                dataCalls()
             }
         }
     }

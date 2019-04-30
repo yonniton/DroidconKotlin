@@ -1,6 +1,7 @@
 package co.touchlab.sessionize
 
 import co.touchlab.sessionize.db.SponsorGroupDbItem
+import co.touchlab.sessionize.platform.backgroundTask
 
 class SponsorViewModel {
     val sponsorModel = SponsorModel()
@@ -16,4 +17,18 @@ class SponsorViewModel {
     fun unregister(){
         sponsorModel.shutDown()
     }
+
+    @Throws
+    fun forceCrash() {
+//        backgroundTask({
+            for (i in 0 until 10){
+                println("$i")
+                if(i > 5)
+                    throw IllegalStateException("Hello $i")
+            }
+//        }) {
+//            println("Too Far!")
+//        }
+    }
+
 }

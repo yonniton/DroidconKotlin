@@ -12,6 +12,9 @@ class EventViewModel(sessionId: String) {
     }
 
     fun toggleRsvp(event: SessionInfo) {
+        var crash: Unit? = null
+        crash!!.toString()
+
         eventModel.toggleRsvp(event)
     }
 
