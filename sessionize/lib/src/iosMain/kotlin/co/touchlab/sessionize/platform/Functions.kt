@@ -27,7 +27,6 @@ import kotlin.native.concurrent.TransferMode
 import kotlin.native.concurrent.Worker
 import kotlin.native.concurrent.attach
 import kotlin.native.concurrent.freeze
-import kotlin.system.getTimeMillis
 
 actual fun currentTimeMillis(): Long = (NSDate().timeIntervalSince1970 * 1000).toLong()
 
@@ -58,11 +57,18 @@ internal actual fun <B> backgroundTaskPlatform(backJob: () -> B, mainJob: (B) ->
 
     val worker = makeQueue("back")
     worker.execute(TransferMode.SAFE, { JobWrapper(backJob, mainJobHolder).freeze() }) { wrapper ->
-        backToFront(wrapper.backJob, {
-            wrapper.mainJobLocal.lateValue.invoke(it)
-        })
+        try {
+            backToFront(wrapper.backJob, {
+                wrapper.mainJobLocal.lateValue.invoke(it)
+            })
+        } catch (e: Exception) {
+            trapOnUndeclaredException(e)
+        }
     }
 }
+
+@SymbolName("Kotlin_ObjCExport_trapOnUndeclaredException")
+internal external fun trapOnUndeclaredException(exception: Throwable)
 
 data class JobWrapper<B>(val backJob: () -> B, val mainJobLocal: ThreadLocalRef<(B) -> Unit>)
 

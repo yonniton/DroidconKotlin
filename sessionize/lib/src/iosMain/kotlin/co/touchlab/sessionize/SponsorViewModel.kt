@@ -20,15 +20,24 @@ class SponsorViewModel {
 
     @Throws
     fun forceCrash() {
-//        backgroundTask({
-            for (i in 0 until 10){
-                println("$i")
-                if(i > 5)
-                    throw IllegalStateException("Hello $i")
-            }
-//        }) {
-//            println("Too Far!")
-//        }
+        backgroundTask({
+            loopdyLoop()
+        }) {
+            println("Too Far!")
+        }
     }
 
+    @Throws
+    fun loopdyLoop() {
+        for (i in 0 until 10){
+            println("$i")
+            if(i > 5)
+                helloDarkness()
+        }
+    }
+
+    @Throws
+    fun helloDarkness() {
+        throw IllegalStateException("Hello darkness, my old friend")
+    }
 }

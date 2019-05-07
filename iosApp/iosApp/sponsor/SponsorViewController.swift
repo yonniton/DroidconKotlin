@@ -8,6 +8,7 @@
 
 import UIKit
 import lib
+import Crashlytics
 
 class SponsorViewController: MaterialAppBarUIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -78,7 +79,11 @@ class SponsorViewController: MaterialAppBarUIViewController, UICollectionViewDat
                 return //be safe
             }
             
-            try! viewModel.forceCrash()
+            do {
+              try viewModel.forceCrash()
+            } catch let error {
+                Crashlytics.sharedInstance().recordError(error)
+            }
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
