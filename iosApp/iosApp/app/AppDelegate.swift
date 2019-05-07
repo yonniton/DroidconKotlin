@@ -21,6 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
+        
+        CrashHookKt.setCrashHook { errorString -> KotlinUnit in
+            let error = NSError(
+                domain:"kotlinError",
+                code: 0,
+                userInfo: ["msg": errorString]
+            )
+            Crashlytics.sharedInstance().recordError(error)
+            return KotlinUnit()
+        }
 
         application.statusBarStyle = .lightContent
       
