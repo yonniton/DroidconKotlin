@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import lib
 
 class CrashView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    let viewModel = CrashViewModel()
+    
+    @IBAction func mainThreadCrash(_ sender: Any) {
+        viewModel.forceCrash()
     }
-    */
-
+    
+    @IBAction func backgroundThreadCrash(_ sender: Any) {
+        viewModel.backgroundCrash()
+    }
 }

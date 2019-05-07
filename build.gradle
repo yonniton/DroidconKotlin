@@ -21,7 +21,7 @@ buildscript {
             'sqliter'              : '0.6.1',
             'ktor'                 : '1.1.4',
             'serialization'        : '0.11.0',
-            'xcode'                : '0.1.2',
+            'xcode'                : '0.1.5',
             'testhelp'             : '0.2.1'
     ]
 

@@ -1,17 +1,51 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CrashView" customModule="iosApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-cs-ZuB">
+                    <rect key="frame" x="164" y="194" width="86" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="I7B-pK-SWI"/>
+                        <constraint firstAttribute="width" constant="86" id="qQr-hF-EqR"/>
+                    </constraints>
+                    <state key="normal" title="Main Thread"/>
+                    <connections>
+                        <action selector="mainThreadCrash:" destination="iN0-l3-epB" eventType="touchUpInside" id="cxi-oI-sCW"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sW2-k3-kJq">
+                    <rect key="frame" x="139.5" y="324" width="135" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="aru-6Z-Irm"/>
+                        <constraint firstAttribute="width" constant="135" id="hIX-nM-ovH"/>
+                    </constraints>
+                    <state key="normal" title="Background Thread"/>
+                    <connections>
+                        <action selector="backgroundThreadCrash:" destination="iN0-l3-epB" eventType="touchUpInside" id="cXX-Ie-9s8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="ICn-cs-ZuB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Shm-We-S0I"/>
+                <constraint firstItem="sW2-k3-kJq" firstAttribute="top" secondItem="ICn-cs-ZuB" secondAttribute="bottom" constant="100" id="geO-LS-8lO"/>
+                <constraint firstItem="ICn-cs-ZuB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="150" id="hds-Qe-unH"/>
+                <constraint firstItem="sW2-k3-kJq" firstAttribute="centerX" secondItem="ICn-cs-ZuB" secondAttribute="centerX" id="mM2-4L-YD3"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
     </objects>

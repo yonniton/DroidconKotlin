@@ -22,13 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
         
-        CrashHookKt.setCrashHook { errorString -> KotlinUnit in
-            let error = NSError(
-                domain:"kotlinError",
-                code: 0,
-                userInfo: ["msg": errorString]
-            )
-            Crashlytics.sharedInstance().recordError(error)
+        CrashHookKt.setCrashHook { [weak self] stackTrace -> KotlinUnit in
+            if let self = self {
+                Crashlytics.sharedInstance().recordCustomExceptionName(
+                    "customKotlinException",
+                    reason: "test",
+                    frameArray: self.frameArray(for: stackTrace)
+                )
+            }
             return KotlinUnit()
         }
 
@@ -57,6 +58,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func frameArray(for stackTrace: [String]) -> [CLSStackFrame] {
+        return stackTrace.map {
+            CLSStackFrame(symbol: $0)
+        }
+    }
+    
     func requestNotificationPermissions(){
 
         let center = UNUserNotificationCenter.current()
@@ -76,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return KotlinUnit()
     }*/
     
-    func csLog(s:String) -> KotlinUnit{
+    func csLog(s:String) -> KotlinUnit {
         CLSLogv(s, getVaList([]))
         return KotlinUnit()
     }
@@ -117,4 +124,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 }
-
