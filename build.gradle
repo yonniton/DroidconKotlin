@@ -21,7 +21,7 @@ buildscript {
             'sqliter'              : '0.6.1',
             'ktor'                 : '1.1.4',
             'serialization'        : '0.11.0',
-            'xcode'                : '0.1.2',
+            'xcode'                : '0.1.5',
             'testhelp'             : '0.2.1'
     ]
 
@@ -108,6 +108,7 @@ allprojects {
         jcenter()
         google()
         mavenCentral()
+        mavenLocal()
         maven { url 'https://maven.fabric.io/public' }
         maven { url "https://kotlin.bintray.com/kotlinx" }
         maven { url "https://dl.bintray.com/russhwolf/multiplatform-settings" }

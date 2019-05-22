@@ -66,6 +66,7 @@ kotlin {
                 implementation deps.ktor.commonCore
                 implementation deps.ktor.commonJson
                 implementation deps.serialization.commonRuntime
+                implementation 'co.touchlab:reaktive:1.0.0-alpha3'
             }
         }
 

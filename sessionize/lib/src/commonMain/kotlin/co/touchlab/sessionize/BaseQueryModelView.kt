@@ -1,9 +1,10 @@
 package co.touchlab.sessionize
 
-import co.touchlab.sessionize.architecture.MainThreadPubSub
-import co.touchlab.sessionize.architecture.Sub
-import co.touchlab.sessionize.db.QueryPub
+import co.touchlab.sessionize.reaktive.asObservable
+import co.touchlab.sessionize.reaktive.mainSubscribe
 import co.touchlab.stately.ensureNeverFrozen
+import com.badoo.reaktive.disposable.Disposable
+import com.badoo.reaktive.scheduler.ioScheduler
 import com.squareup.sqldelight.Query
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
@@ -19,37 +20,33 @@ abstract class BaseQueryModelView<Q : Any, VT>(
         extractData: (Query<Q>) -> VT,
         mainContext: CoroutineContext) : BaseModel(mainContext) {
 
-    private val queryPub = QueryPub(query, extractData)
+    private val queryDisposable: Disposable
 
     init {
         ensureNeverFrozen()
-        val mainPub = MainThreadPubSub<VT>()
-        queryPub.addSub(mainPub)
-        mainPub.addSub(object : Sub<VT> {
-            override fun onNext(next: VT) {
-                view?.let {
-                    launch {
-                        it.update(next)
+
+        val queryObservable = query.asObservable(ioScheduler)
+        queryDisposable = queryObservable
+                .mainSubscribe {
+                    val vt = extractData(it)
+
+                    view?.let {
+                        launch {
+                            it.update(vt)
+                        }
                     }
                 }
-            }
-
-            override fun onError(t: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-        })
     }
 
     private var view: View<VT>? = null
 
     fun register(view: View<VT>) {
         this.view = view
-        queryPub.refresh()
     }
 
     fun shutDown() {
         view = null
-        queryPub.destroy()
+        queryDisposable.dispose()
     }
 
     interface View<VT> {
