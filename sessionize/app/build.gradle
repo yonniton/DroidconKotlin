@@ -7,7 +7,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "co.touchlab.droidconsf2018"
-        buildConfigField "String", "TIME_ZONE", "\"America/Los_Angeles\""
+        buildConfigField "String", "TIME_ZONE", "\"Europe/Berlin\""
 
         minSdkVersion 21
         targetSdkVersion 28

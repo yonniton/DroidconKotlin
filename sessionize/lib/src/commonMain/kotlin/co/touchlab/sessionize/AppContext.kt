@@ -5,7 +5,6 @@ import co.touchlab.sessionize.api.NetworkRepo
 import co.touchlab.sessionize.db.SessionizeDbHelper
 import co.touchlab.sessionize.file.FileRepo
 import co.touchlab.sessionize.platform.NotificationsModel
-import co.touchlab.sessionize.platform.logException
 import kotlinx.serialization.json.Json
 
 object AppContext {
@@ -35,13 +34,9 @@ object AppContext {
     }
 
     private fun maybeLoadSeedData(fileRepo: FileRepo, serviceRegistry: ServiceRegistry) {
-        try {
-            if (firstRun(serviceRegistry)) {
-                fileRepo.seedFileLoad()
-                updateFirstRun(serviceRegistry)
-            }
-        } catch (e: Exception) {
-            logException(e)
+        if (firstRun(serviceRegistry)) {
+            fileRepo.seedFileLoad()
+            updateFirstRun(serviceRegistry)
         }
     }
 
