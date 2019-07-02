@@ -21,11 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") ?? ""
         let fileExists = FileManager.default.fileExists(atPath: path)
-        if(fileExists){
-            FirebaseApp.configure()
-        }else{
-            print("Firebase plist not found: Firebased Not Enabled")
-        }
+//        if(fileExists){
+//            FirebaseApp.configure()
+//        }else{
+//            print("Firebase plist not found: Firebased Not Enabled")
+//        }
         
         application.statusBarStyle = .lightContent
 

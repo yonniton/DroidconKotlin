@@ -8,17 +8,17 @@
 
 import UIKit
 import lib
+import SwiftUI
 
-class SettingsViewController: MaterialAppBarUIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingsViewController: MaterialAppBarUIViewController {
 
-    private var data:Array<Detail>?
-    
-    @IBOutlet weak var tableView : UITableView!
-    
     // MARK: Properties
-    var viewModel:SettingsViewModel!
+    @IBOutlet weak var tableView: UITableView!
+    private var data: [Detail]?
+    var viewModel: SettingsViewModel!
     
     // MARK: Lifecycle events
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,83 +30,89 @@ class SettingsViewController: MaterialAppBarUIViewController, UITableViewDelegat
         let nib = UINib(nibName: "EventTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "eventCell")
         
-        self.tableView.contentInset = UIEdgeInsets.zero
-        self.tableView.separatorStyle = .none
+        tableView.contentInset = UIEdgeInsets.zero
+        tableView.separatorStyle = .none
         updateContent()
         
-        NotificationCenter.default.addObserver(self, selector:#selector(updateContent), name: Notification.Name(FeedbackManager.FeedbackDisabledNotificationName), object: nil)
-
+        let name = FeedbackManager.FeedbackDisabledNotificationName
+        NotificationCenter.default.addObserver(
+            self,
+            selector:#selector(updateContent),
+            name: Notification.Name(name),
+            object: nil
+        )
     }
     
     @objc func updateContent(){
-        data = [
-            SwitchDetail(title: "Enable Feedback",
-                         image: UIImage.init(named: "icon_feedback")!,
-                         enabled:  ServiceRegistry().appSettings.getBoolean(key: SettingsKeys().FEEDBACK_ENABLED, defaultValue: true),
-                         listener: { isOn in
-                            self.viewModel.settingsModel.setFeedbackSettingEnabled(enabled: isOn)
-            }),
-            SwitchDetail(title: "Enable Reminders",
-                         image: UIImage.init(named: "ic_event")!,
-                         enabled: ServiceRegistry().appSettings.getBoolean(key: SettingsKeys().REMINDERS_ENABLED, defaultValue: true),
-                         listener: { isOn in
-                            self.viewModel.settingsModel.setRemindersSettingEnabled(enabled: isOn)
-            }),
-            ButtonDetail(title: "About",
-                         image: UIImage.init(named: "ic_info_outline_white")!,
-                         listener: {
-                            self.performSegue(withIdentifier: "AboutSegue", sender: nil)
-            })
-        ]
-        self.tableView.reloadData()
+        let keys = SettingsKeys()
+        let feedbackSwitch = SwitchDetail(
+            title: "Enable Feedback",
+            image: image(named: "icon_feedback"),
+            enabled: bool(for: keys.FEEDBACK_ENABLED),
+            listener: { isOn in
+                self.setFeedbackSetting(enabled: isOn)
+            }
+        )
+        
+        let remindersSwitch = SwitchDetail(
+            title: "Enable Reminders",
+            image: image(named: "ic_event"),
+            enabled: bool(for: keys.REMINDERS_ENABLED),
+            listener: { isOn in
+                self.setRemindersSetting(enabled: isOn)
+            }
+        )
+        
+        let aboutButton = ButtonDetail(
+            title: "About",
+            image: image(named: "ic_info_outline_white"),
+            listener: {
+//                self.performSegue(
+//                    withIdentifier: "AboutSegue",
+//                    sender: nil
+//                )
+            }
+        )
+
+        data = [feedbackSwitch, remindersSwitch, aboutButton]
+        tableView.reloadData()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: Helper Functions
+    
+    func bool(for settingsKey: String) -> Bool {
+        return ServiceRegistry().appSettings.getBoolean(
+            key: settingsKey,
+            defaultValue: true
+        )
+    }
+    
+    func setFeedbackSetting(enabled: Bool) {
+        viewModel
+            .settingsModel
+            .setFeedbackSettingEnabled(enabled: enabled)
+    }
+    
+    func setRemindersSetting(enabled: Bool) {
+        viewModel
+            .settingsModel
+            .setFeedbackSettingEnabled(enabled: enabled)
+    }
+    
+    func image(named name: String) -> UIImage {
+        return UIImage(named: name) ?? UIImage()
     }
 
     
-    // MARK: TableView
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    @IBSegueAction func aboutSegueAction(_ coder: NSCoder) -> UIViewController? {
+        return UIHostingController(coder: coder, rootView: AboutView())
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:SettingsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "settingCell") as! SettingsTableViewCell
-        let row = (indexPath as NSIndexPath).row
-        cell.loadInfo(data![row])
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
-        
-        if let _ = data![row] as? ButtonDetail {
-            cell.settingSwitch.isHidden = true
-        }else{
-            cell.settingSwitch.addTarget(data![row], action: #selector(SwitchDetail.onSwitchChanged(sender:)), for:UIControlEvents.valueChanged)
-        }
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        
-        NotificationsModel().setNotificationsEnabled(enabled: true)
-        
-        let row = (indexPath as NSIndexPath).row
-
-        if let buttonRow = data![row] as? ButtonDetail {
-            buttonRow.settingListener()
-        }
-    }
-    
-    
+    // MARK: Internal Classes & Enums
     
     enum EntryType{
         case TYPE_BODY
@@ -151,9 +157,60 @@ class SettingsViewController: MaterialAppBarUIViewController, UITableViewDelegat
         }
         
     }
+}
+
+// MARK: TableView Extensions
+
+extension SettingsViewController: UITableViewDataSource {
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard
+            let cell = tableView
+                .dequeueReusableCell(withIdentifier: "settingCell")
+                as? SettingsTableViewCell
+            else { return UITableViewCell() }
+        
+        if let detail = data?[indexPath.row] { cell.loadInfo(detail) }
+        cell.selectionStyle = .none
+        
+        if data?[indexPath.row] is ButtonDetail {
+            cell.settingSwitch.isHidden = true
+        } else if let detail = data?[indexPath.row] {
+            cell.settingSwitch.addTarget(
+                detail,
+                action: #selector(SwitchDetail.onSwitchChanged(sender:)),
+                for: .valueChanged
+            )
+        }
+        
+        return cell
+    }
+}
+
+extension SettingsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+
+        NotificationsModel().setNotificationsEnabled(enabled: true)
+
+        if let buttonRow = data?[indexPath.row] as? ButtonDetail {
+            buttonRow.settingListener()
+        }
+    }
 }

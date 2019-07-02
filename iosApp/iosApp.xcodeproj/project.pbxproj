@@ -24,6 +24,7 @@
 		3B57B84E9E32CE4ACAAD7CC9 /* SpeakerViewModel.kt in Sources */ = {isa = PBXBuildFile; fileRef = 8C40677B832A85589CF8C635 /* SpeakerViewModel.kt */; settings = {COMPILER_FLAGS = "-w"; }; };
 		4505FF5722A5B9010035001A /* SponsorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505FF5622A5B9010035001A /* SponsorTableViewCell.swift */; };
 		4505FF5922A5B91F0035001A /* SponsorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4505FF5822A5B91F0035001A /* SponsorTableViewCell.xib */; };
+		4512437F22CBD28A0023A4BC /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512437E22CBD28A0023A4BC /* AboutView.swift */; };
 		4560AA3822A6C743000719E1 /* sponsor_session.json in Resources */ = {isa = PBXBuildFile; fileRef = 4560AA3722A6C743000719E1 /* sponsor_session.json */; };
 		45F1EE5922A5A4FF00212D9C /* SponsorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F1EE5822A5A4FF00212D9C /* SponsorDetailViewController.swift */; };
 		48C573A1F5D360811E47588C /* Concurrent.kt in Sources */ = {isa = PBXBuildFile; fileRef = 8673736A19BE2116F72DE852 /* Concurrent.kt */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -129,6 +130,7 @@
 		43CFCECCACAE038D1BCCC4AC /* ScheduleFormats.kt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ScheduleFormats.kt; path = ../sessionize/lib/src/commonMain/kotlin/co/touchlab/sessionize/display/ScheduleFormats.kt; sourceTree = "<group>"; };
 		4505FF5622A5B9010035001A /* SponsorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorTableViewCell.swift; sourceTree = "<group>"; };
 		4505FF5822A5B91F0035001A /* SponsorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorTableViewCell.xib; sourceTree = "<group>"; };
+		4512437E22CBD28A0023A4BC /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		4560AA3722A6C743000719E1 /* sponsor_session.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sponsor_session.json; sourceTree = "<group>"; };
 		45F1EE5822A5A4FF00212D9C /* SponsorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorDetailViewController.swift; sourceTree = "<group>"; };
 		4ACF72894BB6E48248D46247 /* EventViewModel.kt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EventViewModel.kt; path = ../sessionize/lib/src/iosMain/kotlin/co/touchlab/sessionize/EventViewModel.kt; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 		63711D3D211146D10099FF25 /* about */ = {
 			isa = PBXGroup;
 			children = (
+				4512437E22CBD28A0023A4BC /* AboutView.swift */,
 			);
 			path = about;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				F6E4FFAABB41BD61BD91502D /* QueryPub.kt in Sources */,
 				1601562F0C1D410B6E17F2FD /* SessionizeDbHelper.kt in Sources */,
 				1601562F0C1D410B6E17F2FD /* SessionizeDbHelper.kt in Sources */,
+				4512437F22CBD28A0023A4BC /* AboutView.swift in Sources */,
 				C764772084EDD3F58CAFB7E9 /* BaseModel.kt in Sources */,
 				F15978AD228D93930038BD02 /* FirebaseMessageHandler.swift in Sources */,
 				785CF0ED224E31269FBEDFFD /* ExpectSuccess.kt in Sources */,
@@ -946,7 +950,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iosApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -972,7 +976,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iosApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
