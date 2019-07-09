@@ -25,6 +25,7 @@
 		4505FF5722A5B9010035001A /* SponsorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505FF5622A5B9010035001A /* SponsorTableViewCell.swift */; };
 		4505FF5922A5B91F0035001A /* SponsorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4505FF5822A5B91F0035001A /* SponsorTableViewCell.xib */; };
 		4512437F22CBD28A0023A4BC /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512437E22CBD28A0023A4BC /* AboutView.swift */; };
+		455C7D4A22CD011A0000399D /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455C7D4922CD011A0000399D /* AboutViewModel.swift */; };
 		4560AA3822A6C743000719E1 /* sponsor_session.json in Resources */ = {isa = PBXBuildFile; fileRef = 4560AA3722A6C743000719E1 /* sponsor_session.json */; };
 		45F1EE5922A5A4FF00212D9C /* SponsorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F1EE5822A5A4FF00212D9C /* SponsorDetailViewController.swift */; };
 		48C573A1F5D360811E47588C /* Concurrent.kt in Sources */ = {isa = PBXBuildFile; fileRef = 8673736A19BE2116F72DE852 /* Concurrent.kt */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -131,6 +132,7 @@
 		4505FF5622A5B9010035001A /* SponsorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorTableViewCell.swift; sourceTree = "<group>"; };
 		4505FF5822A5B91F0035001A /* SponsorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorTableViewCell.xib; sourceTree = "<group>"; };
 		4512437E22CBD28A0023A4BC /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		455C7D4922CD011A0000399D /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		4560AA3722A6C743000719E1 /* sponsor_session.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sponsor_session.json; sourceTree = "<group>"; };
 		45F1EE5822A5A4FF00212D9C /* SponsorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorDetailViewController.swift; sourceTree = "<group>"; };
 		4ACF72894BB6E48248D46247 /* EventViewModel.kt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EventViewModel.kt; path = ../sessionize/lib/src/iosMain/kotlin/co/touchlab/sessionize/EventViewModel.kt; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				4512437E22CBD28A0023A4BC /* AboutView.swift */,
+				455C7D4922CD011A0000399D /* AboutViewModel.swift */,
 			);
 			path = about;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				2FBA0E961E7954510F10142A /* TestFunctions.kt in Sources */,
 				F10A7D00227B777700DED10F /* NotificationsApiImpl.swift in Sources */,
 				45F1EE5922A5A4FF00212D9C /* SponsorDetailViewController.swift in Sources */,
+				455C7D4A22CD011A0000399D /* AboutViewModel.swift in Sources */,
 				86E7721A86624FDE48003DCA /* Notifications.kt in Sources */,
 				F698E4A89CECD079D75F8997 /* SponsorViewModel.kt in Sources */,
 				B5B3ED3D9F987E89B0F4C229 /* ServiceRegistry.kt in Sources */,
@@ -947,6 +951,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8UD86646U9;
 				ENABLE_BITCODE = YES;
+				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -973,6 +978,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UD86646U9;
 				ENABLE_BITCODE = YES;
+				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iosApp/Info.plist;

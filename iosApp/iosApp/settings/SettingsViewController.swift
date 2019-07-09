@@ -109,7 +109,11 @@ class SettingsViewController: MaterialAppBarUIViewController {
 
     
     @IBSegueAction func aboutSegueAction(_ coder: NSCoder) -> UIViewController? {
-        return UIHostingController(coder: coder, rootView: AboutView())
+        let aboutViewModel = AboutViewModel()
+        return UIHostingController(
+            coder: coder,
+            rootView: AboutView(viewModel: aboutViewModel)
+        )
     }
     
     // MARK: Internal Classes & Enums

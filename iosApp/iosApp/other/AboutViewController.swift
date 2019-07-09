@@ -27,6 +27,9 @@ class AboutViewController: MaterialAppBarUIViewController, UITableViewDelegate, 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 80
         AboutModel().loadAboutInfo(proc: updateUi)
+        AboutModel().loadAboutInfo { (aboutInfo) -> KotlinUnit in
+            self.updateUi(aboutInfoData: aboutInfo)
+        }
     }
     
     func updateUi(aboutInfoData:[AboutInfo]) -> KotlinUnit{

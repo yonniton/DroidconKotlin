@@ -7,17 +7,52 @@
 //
 
 import SwiftUI
+import lib
 
 struct AboutView : View {
+    @ObjectBinding var viewModel: AboutViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List(viewModel.aboutInfo.identified(by: \.title)) { data in
+                AboutRow(data: data)
+            }
+            .onAppear() {
+                self.viewModel.fetch()
+            }
+            .navigationBarTitle(
+                Text("About"),
+                displayMode: .automatic)
+        }
+    }
+}
+
+struct AboutRow : View {
+    var data: AboutInfo
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Spacer()
+                Image(data.icon)
+                    .renderingMode(.original)
+                Spacer()
+            }
+            
+            Spacer()
+            Text(data.title).font(.headline)
+
+            Spacer()
+            Text(data.detail).font(.subheadline)
+        }
     }
 }
 
 #if DEBUG
 struct AboutView_Previews : PreviewProvider {
     static var previews: some View {
-        AboutView()
+        AboutView(viewModel: AboutViewModel())
     }
 }
 #endif
+
