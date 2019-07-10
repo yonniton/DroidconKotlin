@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CrashView" customModule="iosApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1I-oD-HhX">
+                    <rect key="frame" x="20" y="244" width="374" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="drh-oz-ZhH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="31"/>
+                    <state key="normal" title="Crash Main Thread">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="mainThreadCrash:" destination="iN0-l3-epB" eventType="touchUpInside" id="zdC-BR-cGQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQk-lZ-Ffu">
+                    <rect key="frame" x="12" y="384" width="391" height="49"/>
+                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="31"/>
+                    <state key="normal" title="Crash Background Thread">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="backgroundThreadCrash:" destination="iN0-l3-epB" eventType="touchUpInside" id="Aoo-In-79D"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="y1I-oD-HhX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1VS-n0-2Le"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lQk-lZ-Ffu" secondAttribute="trailing" constant="11" id="4VD-E9-fUd"/>
+                <constraint firstItem="lQk-lZ-Ffu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="5L3-Yq-eCx"/>
+                <constraint firstItem="lQk-lZ-Ffu" firstAttribute="top" secondItem="y1I-oD-HhX" secondAttribute="bottom" constant="91" id="6P2-Ir-FOq"/>
+                <constraint firstItem="y1I-oD-HhX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="200" id="95E-rJ-7lB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="y1I-oD-HhX" secondAttribute="trailing" constant="20" id="SAl-IJ-7xQ"/>
+                <constraint firstItem="y1I-oD-HhX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="fbW-Gm-eM4"/>
+                <constraint firstItem="lQk-lZ-Ffu" firstAttribute="height" secondItem="y1I-oD-HhX" secondAttribute="height" id="wgx-Kp-vAy"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+</document>

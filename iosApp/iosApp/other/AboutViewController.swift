@@ -26,7 +26,15 @@ class AboutViewController: MaterialAppBarUIViewController, UITableViewDelegate, 
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 80
-        AboutModel().loadAboutInfo(proc: updateUi)
+
+        if let crashView = Bundle
+            .main
+            .loadNibNamed(
+                "CrashView",
+                owner: self,
+                options: nil)?[0] as? CrashView {
+            view = crashView
+        }
     }
     
     func updateUi(aboutInfoData:[AboutInfo]) -> KotlinUnit{

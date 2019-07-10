@@ -25,6 +25,8 @@
 		4505FF5722A5B9010035001A /* SponsorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505FF5622A5B9010035001A /* SponsorTableViewCell.swift */; };
 		4505FF5922A5B91F0035001A /* SponsorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4505FF5822A5B91F0035001A /* SponsorTableViewCell.xib */; };
 		4560AA3822A6C743000719E1 /* sponsor_session.json in Resources */ = {isa = PBXBuildFile; fileRef = 4560AA3722A6C743000719E1 /* sponsor_session.json */; };
+		45B0464B22D637A700263ED6 /* CrashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B0464A22D637A700263ED6 /* CrashView.swift */; };
+		45B0464D22D637E700263ED6 /* CrashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45B0464C22D637E700263ED6 /* CrashView.xib */; };
 		45F1EE5922A5A4FF00212D9C /* SponsorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F1EE5822A5A4FF00212D9C /* SponsorDetailViewController.swift */; };
 		48C573A1F5D360811E47588C /* Concurrent.kt in Sources */ = {isa = PBXBuildFile; fileRef = 8673736A19BE2116F72DE852 /* Concurrent.kt */; settings = {COMPILER_FLAGS = "-w"; }; };
 		48D2C9943260AEA15BA3AF6B /* AnalyticsApi.kt in Sources */ = {isa = PBXBuildFile; fileRef = 956D6B892731AA292E5B839A /* AnalyticsApi.kt */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -130,6 +132,8 @@
 		4505FF5622A5B9010035001A /* SponsorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorTableViewCell.swift; sourceTree = "<group>"; };
 		4505FF5822A5B91F0035001A /* SponsorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SponsorTableViewCell.xib; sourceTree = "<group>"; };
 		4560AA3722A6C743000719E1 /* sponsor_session.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sponsor_session.json; sourceTree = "<group>"; };
+		45B0464A22D637A700263ED6 /* CrashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashView.swift; sourceTree = "<group>"; };
+		45B0464C22D637E700263ED6 /* CrashView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CrashView.xib; sourceTree = "<group>"; };
 		45F1EE5822A5A4FF00212D9C /* SponsorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorDetailViewController.swift; sourceTree = "<group>"; };
 		4ACF72894BB6E48248D46247 /* EventViewModel.kt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EventViewModel.kt; path = ../sessionize/lib/src/iosMain/kotlin/co/touchlab/sessionize/EventViewModel.kt; sourceTree = "<group>"; };
 		5441AE901CA6DD9C25CF47C4 /* StaticFiles.kt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = StaticFiles.kt; path = ../sessionize/lib/src/commonTest/kotlin/co/touchlab/sessionize/StaticFiles.kt; sourceTree = "<group>"; };
@@ -347,6 +351,8 @@
 			children = (
 				6372424420F9B7800049263B /* AboutViewController.swift */,
 				63711D3E2111470A0099FF25 /* AboutInfoTableViewCell.swift */,
+				45B0464A22D637A700263ED6 /* CrashView.swift */,
+				45B0464C22D637E700263ED6 /* CrashView.xib */,
 			);
 			path = other;
 			sourceTree = "<group>";
@@ -592,6 +598,7 @@
 				63A76AD32129F1FB0000515D /* sponsors.json in Resources */,
 				6372424F20FAD9B40049263B /* EventTableViewCell.xib in Resources */,
 				F15E05BB2260F4EE0057C7D8 /* baseline_sentiment_very_dissatisfied_black_48dp.png in Resources */,
+				45B0464D22D637E700263ED6 /* CrashView.xib in Resources */,
 				F15E05BA2260F4EE0057C7D8 /* baseline_sentiment_satisfied_black_48dp.png in Resources */,
 				4505FF5922A5B91F0035001A /* SponsorTableViewCell.xib in Resources */,
 				63711D3C211143390099FF25 /* about.json in Resources */,
@@ -739,6 +746,7 @@
 				E186F527F790D23F182BCEFB /* Extensions.kt in Sources */,
 				962974E75078C2E7FBE580BC /* DateAdapter.kt in Sources */,
 				F6E4FFAABB41BD61BD91502D /* QueryPub.kt in Sources */,
+				45B0464B22D637A700263ED6 /* CrashView.swift in Sources */,
 				1601562F0C1D410B6E17F2FD /* SessionizeDbHelper.kt in Sources */,
 				1601562F0C1D410B6E17F2FD /* SessionizeDbHelper.kt in Sources */,
 				C764772084EDD3F58CAFB7E9 /* BaseModel.kt in Sources */,

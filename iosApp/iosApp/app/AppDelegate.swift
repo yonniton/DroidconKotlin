@@ -27,6 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Firebase plist not found: Firebased Not Enabled")
         }
         
+        CrashHookKt.setCrashHook { [weak self] stackTrace -> KotlinUnit in
+            if let self = self {
+                Crashlytics.sharedInstance().recordCustomExceptionName(
+                    "customKotlinException",
+                    reason: "test",
+                    frameArray: self.frameArray(for: stackTrace)
+                )
+            }
+            return KotlinUnit()
+        }
+        
         application.statusBarStyle = .lightContent
 
         serviceRegistry.doInitLambdas(staticFileLoader: loadAsset, clLogCallback: csLog, softExceptionCallback: softExceptionCallback)
@@ -50,6 +61,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             FirebaseMessageHandler.initMessaging()
         }
         return true
+    }
+    
+    func frameArray(for stackTrace: [String]) -> [CLSStackFrame] {
+        return stackTrace.map {
+            CLSStackFrame(symbol: $0)
+        }
     }
 
     /*func dispatch(context: KotlinCoroutineContext, block: Kotlinx_coroutines_core_nativeRunnable) -> KotlinUnit {
