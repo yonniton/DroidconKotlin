@@ -29,10 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         CrashHookKt.setCrashHook { [weak self] stackTrace -> KotlinUnit in
             if let self = self {
+                
+                let clsStackTrace = stackTrace.map {
+                    self.clsStackFrame(for: $0)
+                }
+                
                 Crashlytics.sharedInstance().recordCustomExceptionName(
-                    "customKotlinException",
+                    "kotlinRuntimeException",
                     reason: "test",
-                    frameArray: self.frameArray(for: stackTrace)
+                    frameArray: clsStackTrace
                 )
             }
             return KotlinUnit()
@@ -63,10 +68,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func frameArray(for stackTrace: [String]) -> [CLSStackFrame] {
-        return stackTrace.map {
-            CLSStackFrame(symbol: $0)
-        }
+//    func frameArray(for stackTrace: [String]) -> [CLSStackFrame] {
+//        return stackTrace.map {
+//            CLSStackFrame(symbol: $0)
+//        }
+//    }
+    
+    func clsStackFrame(for kmpStackFrame: KMPStackFrame) -> CLSStackFrame {
+        let frame = CLSStackFrame(symbol: kmpStackFrame.rawSymbol)
+        frame.library = kmpStackFrame.library
+
+        if let line = __uint32_t(kmpStackFrame.lineNumber) { frame.lineNumber = line }
+        if let address = __uint64_t(kmpStackFrame.address) { frame.address = address }
+        
+        return frame
     }
 
     /*func dispatch(context: KotlinCoroutineContext, block: Kotlinx_coroutines_core_nativeRunnable) -> KotlinUnit {
