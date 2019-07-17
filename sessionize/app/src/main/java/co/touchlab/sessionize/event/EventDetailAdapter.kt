@@ -1,6 +1,7 @@
 package co.touchlab.sessionize.event
 
 import android.app.Activity
+import android.net.Uri
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
@@ -13,18 +14,39 @@ import co.touchlab.sessionize.NavigationHost
 import co.touchlab.sessionize.R
 import co.touchlab.sessionize.speaker.SpeakerFragment
 import com.squareup.picasso.Picasso
-import java.util.ArrayList
+import io.ktor.client.HttpClient
+import io.ktor.client.request.get
+import org.json.JSONObject
+import java.util.*
 
 class EventDetailAdapter(private val activity: Activity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var data = ArrayList<Detail>()
+
+    suspend fun translate(txtEN: String): String {
+        val uriTranslate = Uri.parse("https://api.microsofttranslator.com/v2/ajax.svc/TranslateArray")
+            .buildUpon()
+            .query("appId=%22TA9jw1by3nOI8Yvw9t0A-3RFVQkcg3HwLBEPWLB_BAQk*%22&texts=%5B%22$txtEN%22%5D&from=%22en%22&to=%22zh-chs%22&oncomplete=onComplete_4&onerror=onError_4")
+            .build()
+        val result = HttpClient().get<String>(uriTranslate.toString())
+        return result.let { txtResponse ->
+            """onComplete_4\(\[(.+)\]\)"""
+                .toRegex()
+                .matchEntire(txtResponse)
+                ?.groupValues
+                ?.firstOrNull()
+                ?.let { JSONObject(it) }
+                ?.let { it.optString("TranslatedText") }
+                ?: ""
+        }
+    }
 
     fun addHeader(title: String) {
         data.add(HeaderDetail(EntryType.TYPE_HEADER, title))
     }
 
     fun addBody(description: String) {
-        data.add(TextDetail(EntryType.TYPE_BODY, description, 0))
+        suspend { data.add(TextDetail(EntryType.TYPE_BODY, translate(description), 0)) }
     }
 
     fun addInfo(description: String) {
