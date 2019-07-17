@@ -36,7 +36,7 @@ dependencies {
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.0.0"
 
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation "androidx.core:core:1.0.0"
+    implementation "androidx.core:core:1.0.2"
 }
 
 version = "1.0"
@@ -114,8 +114,8 @@ kotlin {
                 implementation deps.kotlin.coroutines.android
                 implementation deps.serialization.jvmRuntime
                 implementation 'junit:junit:4.12'
-                implementation "androidx.test:core:1.1.0"
-                implementation "androidx.test.ext:junit:1.1.0"
+                implementation "androidx.test:core:1.2.0"
+                implementation "androidx.test.ext:junit:1.1.1"
                 implementation "org.robolectric:robolectric:4.0"
             }
         }
