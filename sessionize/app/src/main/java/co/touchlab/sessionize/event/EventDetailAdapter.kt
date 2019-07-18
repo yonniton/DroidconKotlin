@@ -46,7 +46,11 @@ class EventDetailAdapter(private val activity: Activity) : RecyclerView.Adapter<
     }
 
     fun addBody(description: String) {
-        suspend { data.add(TextDetail(EntryType.TYPE_BODY, translate(description), 0)) }
+        data.add(TextDetail(EntryType.TYPE_BODY, description, 0))
+        suspend {
+            val translation = translate(description)
+            data.add(TextDetail(EntryType.TYPE_BODY, translation, 0))
+        }
     }
 
     fun addInfo(description: String) {
