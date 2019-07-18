@@ -3176,7 +3176,7 @@
           {
             "id": "97549",
             "title": "Mobile @Scale with React Native",
-            "description": "Wix Mobile Application built with React Native, a cross-platform framework, allowing developers to compose mobile apps using JavaScript in a declarative way.\r\n\r\nAt Wix.com we are building our mobile app with React Native from the first commit almost three years ago. \r\nToday, we are ~70 mobile developers, from 15 different teams, writing code that is integrated into one application, with the ability to release a new version to stores every day.\r\n\r\nScaling a production-grade application without compromising on performance and dev velocity, brought us to multi-module architecture, and think more like an OS to allow each team integrates their mini app (\"Module\") into the main Wix’s React Native mobile platform (aka \"Engine\").\r\n\r\nIn this talk, we will start from the basic concept of React-Native and understand how it fits with multi-module architecture in mobile. Following that, we will demonstrate the full development process when working at scale, through testing, building and releasing the app to the stores.\r\n",
+            "description": "Wix 移动应用程序使用 React Native(一个跨平台框架)构建,允许开发人员以声明性方式使用 JavaScript 编写移动应用程序。\n\n在Wix.com,我们正在构建我们的移动应用程序与反应原生从第一次提交近三年前。\n如今,我们来自 15 个不同团队的 70 名移动开发人员,他们编写集成到一个应用程序中的代码,并能够每天向商店发布新版本。\n\n在不影响性能和开发速度的情况下扩展生产级应用程序,将我们带到多模块架构中,并更像操作系统,允许每个团队将其微型应用程序(\"模块\")集成到 Wix 的响应原生移动中平台(也称为\"引擎\")。\n\n在本讲座中,我们将从 React-Native 的基本概念开始,并了解它如何与移动中的多模块体系结构拟合。之后,我们将通过测试、构建和发布应用程序 t,在大规模工作时演示完整的开发过程。",
             "startsAt": "2019-07-02T10:10:00",
             "endsAt": "2019-07-02T10:50:00",
             "isServiceSession": false,
@@ -3380,7 +3380,7 @@
           {
             "id": "127139",
             "title": "A LUT (lot) of image filters for Android",
-            "description": "In this talk, we will learn how to create Instagram like filters with LUTs (Lookup Tables) using Renderscript on Android. \r\n\r\nWe will briefly look into various approaches one can take for creating filters on Android. We will then learn about the basics of LUTs and how we can use them with Renderscript for creating filters. Finally, we will focus on the challenges that we faced while implementing filters on Android with the Renderscript framework.\r\nWe will try to use graphical representations wherever possible to explain all these concepts.",
+            "description": "在本讲座中,我们将学习如何使用 Android 上的呈现脚本创建 Instagram,就像使用 LUT(查找表)的筛选器一样。\n\n我们将简要地研究一下在 Android 上创建筛选器可以采取的各种方法。然后,我们将了解 LUT 的基础知识以及如何将它们与 Renderscript 一起用于创建筛选器。最后,我们将重点讨论我们在使用 Renderscript 框架在 Android 上实现筛选器时面临的挑战。\n我们将尽可能使用图形表示来解释所有这些概念。",
             "startsAt": "2019-07-02T10:10:00",
             "endsAt": "2019-07-02T10:50:00",
             "isServiceSession": false,
@@ -3580,7 +3580,7 @@
           {
             "id": "127374",
             "title": "Data Encryption on Android",
-            "description": "Go through strategies for data encryption on Android and do a deep dive into the Jetpack Security library.\r\n\r\n1. Outline the currently problem with encryption on Android including rampant bad information online.\r\n2. Best practices for using Jetpack Security.\r\n3. Deep dive into why / how the JetSec was built, talk about design decisions and challenges building the library.\r\n4. Dive into Tink, an open source library powering JetSec.\r\n5. Overall takeaway, learn how to properly leverage the AndroidKeyStore and encrypt data properly.",
+            "description": "浏览 Android 上的数据加密策略,并深入了解 Jetpack 安全库。\n\n1. 概述当前 Android 上的加密问题,包括在线猖獗的不良信息。\n2. 使用 Jetpack 安全性的最佳做法。\n3. 深入探讨 JetSec 的构建原因/方式,讨论设计决策和构建库的挑战。\n4. 潜入 Tink,一个为 JetSec 提供动力的开源库。\n5. 总体要点,了解如何正确利用 AndroidKeyStore 并正确加密数据。",
             "startsAt": "2019-07-02T10:10:00",
             "endsAt": "2019-07-02T10:50:00",
             "isServiceSession": false,
@@ -4050,7 +4050,7 @@
             "session": {
               "id": "97549",
               "title": "Mobile @Scale with React Native",
-              "description": "Wix Mobile Application built with React Native, a cross-platform framework, allowing developers to compose mobile apps using JavaScript in a declarative way.\r\n\r\nAt Wix.com we are building our mobile app with React Native from the first commit almost three years ago. \r\nToday, we are ~70 mobile developers, from 15 different teams, writing code that is integrated into one application, with the ability to release a new version to stores every day.\r\n\r\nScaling a production-grade application without compromising on performance and dev velocity, brought us to multi-module architecture, and think more like an OS to allow each team integrates their mini app (\"Module\") into the main Wix’s React Native mobile platform (aka \"Engine\").\r\n\r\nIn this talk, we will start from the basic concept of React-Native and understand how it fits with multi-module architecture in mobile. Following that, we will demonstrate the full development process when working at scale, through testing, building and releasing the app to the stores.\r\n",
+              "description": "Wix 移动应用程序使用 React Native(一个跨平台框架)构建,允许开发人员以声明性方式使用 JavaScript 编写移动应用程序。\n\n在Wix.com,我们正在构建我们的移动应用程序与反应原生从第一次提交近三年前。\n如今,我们来自 15 个不同团队的 70 名移动开发人员,他们编写集成到一个应用程序中的代码,并能够每天向商店发布新版本。\n\n在不影响性能和开发速度的情况下扩展生产级应用程序,将我们带到多模块架构中,并更像操作系统,允许每个团队将其微型应用程序(\"模块\")集成到 Wix 的响应原生移动中平台(又名\"引擎\")。\n\n在本讲座中,我们将从 React-Native 的基本概念开始,并了解它如何与移动中的多模块体系结构拟合。之后,我们将通过测试、构建应用程序并将其发布到商店,在大规模工作时演示完整的开发过程。",
               "startsAt": "2019-07-02T10:10:00",
               "endsAt": "2019-07-02T10:50:00",
               "isServiceSession": false,
@@ -4073,7 +4073,7 @@
             "session": {
               "id": "127139",
               "title": "A LUT (lot) of image filters for Android",
-              "description": "In this talk, we will learn how to create Instagram like filters with LUTs (Lookup Tables) using Renderscript on Android. \r\n\r\nWe will briefly look into various approaches one can take for creating filters on Android. We will then learn about the basics of LUTs and how we can use them with Renderscript for creating filters. Finally, we will focus on the challenges that we faced while implementing filters on Android with the Renderscript framework.\r\nWe will try to use graphical representations wherever possible to explain all these concepts.",
+              "description": "在本讲座中,我们将学习如何使用 Android 上的呈现脚本创建 Instagram,就像使用 LUT(查找表)的筛选器一样。\n\n我们将简要地研究一下在 Android 上创建筛选器可以采取的各种方法。然后,我们将了解 LUT 的基础知识以及如何将它们与 Renderscript 一起用于创建筛选器。最后,我们将重点讨论我们在使用 Renderscript 框架在 Android 上实现筛选器时面临的挑战。\n我们将尽可能使用图形表示来解释所有这些概念。",
               "startsAt": "2019-07-02T10:10:00",
               "endsAt": "2019-07-02T10:50:00",
               "isServiceSession": false,
